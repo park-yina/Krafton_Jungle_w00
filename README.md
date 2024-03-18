@@ -40,7 +40,9 @@
         </tr>
     </tbody>
 </table>
+
 - [ ] 2번 후보 Tailwind
+
 <table>
     <thead>
         <tr>
