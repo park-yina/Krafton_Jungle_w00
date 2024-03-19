@@ -16,11 +16,12 @@
         {% for image in dummy %}
         <div class="card-container">
             <div class="items">                
-                <img src="{{ image.img }}" alt="{{ image.alt }}" title="이미지를 클릭해보세요" class="open-modal">
+                <img src="{{ image.img }}" alt="{{ image.alt }}" title="이미지를 클릭해보세요" class="open-modal" data-id="{{ image.id }}">
             </div>
         </div>
         {% endfor %}
     </div>
+    
     <div class="story_wrapper">
         {% for image in dummy %}
         <p class="story">{{ image.story }}</p>
@@ -30,9 +31,12 @@
     <!-- 모달 -->
     <div id="modal" class="modal hidden">
         <img id="modal-image" src="" alt="Modal Image">
+        <p id="modal-story" class="story"></p>
         <button class="btn-3d green" id="close-modal" >닫기</button>
     </div>
-
+    <script>
+        const dummy = {{ dummy | tojson }};
+    </script>
     <script src="{{ url_for('static', filename='js/modal.js') }}"></script>
 </body>
 </html>

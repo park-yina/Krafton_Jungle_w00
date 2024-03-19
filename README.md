@@ -10,4 +10,4 @@ constants파일은 테마 색상등 계속 중복해서 사용 할 색상들을 
 ### static
 정적으로 랜더링하는 대부분의 파일이 이곳에 들어갑니다.<br>css폴더나 constants폴더 등도 여기에 해당합니다.
 ### templates
-jinja2를 사용하기 위해 만든 html 파일이 위치하는 곳입니다.
+jinja2를 사용하기 위해 만든 html 파일이 위치하는 곳입니다.g

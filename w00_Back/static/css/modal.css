@@ -1,21 +1,23 @@
 @import url("/w00_Back/static/css/constants.css"); 
 .modal {
-    position: absolute;
-    /* top: 50%; */
-    /* left: 50%; */
-    margin-left: 4%;
-    margin-top:2%;
+    position: fixed; /* 모달이 뷰포트 안에 있도록 함 */
     z-index: 999;
     width: 60%;
     height: 60%;
+    max-height: calc(100vh - 4rem);
+
     overflow: visible;
 }
 #modal-image {
     width: -webkit-fill-available;
-    /* max-width: 100%; */
     height: -webkit-fill-available;
+    border: var(--img-border) solid 1rem;
+    border-radius: 2rem;
 }
 .modal::-webkit-scrollbar {
-    width: 0; /* 스크롤바 너비를 0으로 설정하여 숨김 */
-    background-color: transparent; /* 스크롤바 배경색을 투명으로 설정 */
+    width: 0;
+    background-color: transparent;
+}
+#modal-story {
+    background: linear-gradient(to right, var(--background-color), var(--btn-color));
 }
