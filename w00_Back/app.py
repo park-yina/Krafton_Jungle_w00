@@ -13,6 +13,15 @@ def index():
         'story': '원장님으로 테스트를 하면 뭔가 잘될  것도?',
         'img': 'https://newsimg.sedaily.com/2023/11/06/29X4PNBKIV_1.jpg'
     },
+        {
+        'story': '당신은 저주걸린 원장님을 구경중입니다',
+        'img': 'https://newsimg.sedaily.com/2023/11/06/29X4PNBKIV_1.jpg'
+    },
+        {
+        'story': '저주의 주체는 과연 누구일까요?',
+        'img': 'https://newsimg.sedaily.com/2023/11/06/29X4PNBKIV_1.jpg'
+    },
+    
 ]
 
 
@@ -21,7 +30,7 @@ def index():
                 page_title='잼톡',
                 dummy=dummydata,
                 alt='로드실패',
-                num_images=len(dummydata)
+               num_cols=len(dummydata)
     )
 if __name__ == '__main__':
     app.run(debug=True)
