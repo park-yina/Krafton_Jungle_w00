@@ -2,8 +2,8 @@
 .modal {
     position: fixed; /* 모달이 뷰포트 안에 있도록 함 */
     z-index: 999;
-    width: 60%;
-    height: 60%;
+    width: 30%;
+    height: 50%;
     max-height: calc(100vh - 4rem);
 
     overflow: visible;
