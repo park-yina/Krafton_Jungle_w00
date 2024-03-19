@@ -1,0 +1,46 @@
+@media only screen and (max-width: 768px) {
+  body {
+    overflow: auto;
+  }
+
+  #wrapper {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 0.5rem;
+    width: max-content;
+    border-radius: 2rem;
+    overflow-x: auto; /* 필요한 경우에만 가로 스크롤이 표시되도록 수정 */
+    justify-items: center; /* 이미지를 가운데 정렬 */
+  }
+
+  #back-btn {
+    visibility: hidden;
+  }
+
+  .card-container {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .items {
+    background-color: unset;
+    width: 100%;
+    border-radius: 2rem;
+  }
+
+  .items img {
+    width: 100%;
+    object-fit: contain;
+  }
+
+  .story_wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .story,
+  .card-container {
+    width: 100%;
+  }
+}

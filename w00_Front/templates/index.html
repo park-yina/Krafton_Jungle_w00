@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mobile.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/constants.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/modal.css') }}">
@@ -11,7 +12,7 @@
     <title>{{ page_title }}</title>
 </head>
 <body>
-    <a href="#" class="btn-3d green">뒤로가기</a>
+    <a href="#" class="btn-3d green" id="back-btn">뒤로가기</a>
     <div id="wrapper">
         {% for image in dummy %}
         <div class="card-container">
@@ -25,8 +26,8 @@
     <div class="story_wrapper">
         {% for image in dummy %}
         <p class="story">{{ image.story }}</p>
-      </div>
-      {% endfor %}
+        {% endfor %}
+    </div>
       
     <!-- 모달 -->
     <div id="modal" class="modal hidden">
@@ -34,9 +35,10 @@
         <p id="modal-story" class="story"></p>
         <button class="btn-3d green" id="close-modal" >닫기</button>
     </div>
-    <script>
-        const dummy = {{ dummy | tojson }};
-    </script>
+</div>
+<script>
+    const dummy = {{ dummy | tojson }};
+</script>
     <script src="{{ url_for('static', filename='js/modal.js') }}"></script>
 </body>
 </html>
