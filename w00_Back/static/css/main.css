@@ -7,6 +7,18 @@ body{
     justify-content: center;
     background:var(--background-color);
 }
+body::-webkit-scrollbar {
+    height: 3rem; 
+  }
+  /* 스크롤바 막대 */
+  body::-webkit-scrollbar-thumb {
+    background-color: #8C9EFF; /* 새로운 색상: Lighter shade of purple */
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background-color: #536DFE; /* 새로운 색상: Darker shade of purple */
+}
+
 #wrapper { 
     display: grid;
     grid-template-columns: repeat(2, 1fr); 
@@ -55,11 +67,6 @@ body{
     margin-left: -60px;
     opacity: 0;
     transition: opacity 0.3s;
-}
-
-.tooltip-container:hover .tooltip {
-    visibility: visible;
-    opacity: 1;
 }
 .story{
     font-size: 3rem;

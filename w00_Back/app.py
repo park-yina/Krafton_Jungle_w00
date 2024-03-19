@@ -33,7 +33,6 @@ def index():
                 'index.html',
                 page_title='잼톡',
                 dummy=dummydata,
-                alt='로드실패',
                num_cols=len(dummydata)
     )
 if __name__ == '__main__':

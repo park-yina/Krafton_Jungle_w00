@@ -1,0 +1,21 @@
+@import url("/w00_Back/static/css/constants.css"); 
+.modal {
+    position: absolute;
+    /* top: 50%; */
+    /* left: 50%; */
+    margin-left: 4%;
+    margin-top:2%;
+    z-index: 999;
+    width: 60%;
+    height: 60%;
+    overflow: visible;
+}
+#modal-image {
+    width: -webkit-fill-available;
+    /* max-width: 100%; */
+    height: -webkit-fill-available;
+}
+.modal::-webkit-scrollbar {
+    width: 0; /* 스크롤바 너비를 0으로 설정하여 숨김 */
+    background-color: transparent; /* 스크롤바 배경색을 투명으로 설정 */
+}
