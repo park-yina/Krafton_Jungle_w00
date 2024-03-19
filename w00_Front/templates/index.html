@@ -7,15 +7,15 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/constants.css') }}">
     <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='favi.ico') }}">
-
     <title>{{ page_title }}</title>
 </head>
 <body>
+    <a href="#" class="btn-3d green">뒤로가기</a>
     <div id="wrapper">
         {% for image in dummy %}
         <div class="card-container">
             <div class="items">                
-                <img src="{{ image.img }}" alt="{{ image.alt }}">
+                <img src="{{ image.img }}" alt="{{ image.alt }}" title="이미지를 클릭해보세요">
             </div>
         </div>
         {% endfor %}
