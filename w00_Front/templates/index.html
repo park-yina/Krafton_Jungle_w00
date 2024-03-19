@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page_title }}</title>
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='image.png') }}" alt="Header Image">
+    </header>
+    
+    <!-- 이후 내용은 페이지의 본문 내용입니다. -->
+    <div class="inner_container">
+        <div class="image_container">
+            {% for image in dummy %}
+            <img src="{{ image.img }}" alt="{{alt}}" style="width: {{ 100 / num_images }}%">
+            <h2>"{{image.story}}"</h2>
+        {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
