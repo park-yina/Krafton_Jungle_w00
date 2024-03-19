@@ -38,6 +38,9 @@
         height: auto;
         object-fit: contain;
     }
+    .story{
+        font-size: 3rem;
+    }
 </style>
 <body>
     <div id="wrapper">
@@ -45,10 +48,14 @@
         <div class="card-container">
             <div class="items">                
                 <img src="{{ image.img }}" alt="{{ image.alt }}">
-                <h1 class="h1">{{image.story}}</h1>
             </div>
         </div>
         {% endfor %}
     </div>
+    <div class="story_wrapper">
+        {% for image in dummy %}
+        <p class="story">{{ image.story }}</p>
+      </div>
+      {% endfor %}
 </body>
 </html>
