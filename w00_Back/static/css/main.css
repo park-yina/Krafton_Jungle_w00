@@ -1,97 +1,47 @@
 @import url("/w00_Back/static/css/constants.css"); 
-.body{
+body{
     width:100%;
     height: 100%;
     overflow: auto;
-}
-.carousel_main {
+    display: grid;
     justify-content: center;
-    display: flex;
-    /* align-items: center; */
-    height: 70%;
-    width: 90%;
-    position: absolute;
-    /* overflow: hidden; */
-    margin: 0 auto;
-    user-select: none;
+}
+#wrapper { 
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    grid-gap: 0.5rem;
+    margin: 30px;
+    width:60%;
+    border-radius: 2rem;
+    border:hidden;
+    height: 30%;
 }
 
-.carousel_wrapper {
-    display: flex;
-    transition: transform 1s;
-}
-
-.carousel_slide {
-    flex: 0 0 100%; /* 이미지 크기 설정  */
-    position: relative;
-}
-
-.carousel_slide img {
-    display: block;
+.card-container {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-.carousel_button_container {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.items {
+    border: var(--btn-color) solid 0.7rem;
+    background-color: unset;
     width: 100%;
+    height: -webkit-fill-available;
+    border-radius: 2rem;
 }
 
-.carousel_button {
-    width: 50px;
-    height: 50px;
-    color: #fff;
-    background: transparent;
-    border: none;
-    outline: none;
-    cursor: pointer;
-}
 
-.carousel_prev {
-    background-color: rgba(0, 0, 0, 0.3);
-    border: 0px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
+.items img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 2rem;
+   
 }
-
-.carousel_next {
-    background-color: rgba(0, 0, 0, 0.3);
-    border: 0px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-}
-.carousel_pagination {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-}
-
-.carousel_circle {
-    width: 10px;
-    height: 10px;
-    background-color: #aaa;
-    border-radius: 50%;
-    margin: 0 5px;
-    cursor: pointer;
-}
-
-.carousel_circle.active {
-    background-color: #333;
-}
-.h1{
+.story{
     font-size: 3rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
