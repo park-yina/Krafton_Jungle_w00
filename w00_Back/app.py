@@ -21,6 +21,10 @@ def index():
         'story': '저주의 주체는 과연 누구일까요?',
         'img': 'https://newsimg.sedaily.com/2023/11/06/29X4PNBKIV_1.jpg'
     },
+    {
+        'story': '그런게 뭐가 중요한가요 내일이 제출인데',
+        'img': 'https://newsimg.sedaily.com/2023/11/06/29X4PNBKIV_1.jpg'
+    },
     
 ]
 
