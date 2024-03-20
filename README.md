@@ -6,18 +6,9 @@
 - [x] 디스코드로 형상관리를 한다? 열정만 있으면 무엇이든 OK인 이곳은 정글입니다.<br>
 - [X] 우리는 개발자다.<br>그렇기에 모든 최종은 과감하게 git-hub의 main에서 관리합니다.
 # 팀원 소개
-    <td align="center" width="120px">
-      <a href="https://github.com/JunHyeokDev" target="_blank">
-        <img src="https://avatars.githubusercontent.com/u/120662329?v=4" alt="김준혁 프로필" />
-      </a>
-    </td>
-        <td align="center">
-      <a href="https://github.com/park-yina" target="_blank">
-       박이나
-      </a>
-    </td> 
-        <td align="center">
-      <a href="https://github.com/6puritans9" target="_blank">
-       이규홍
-      </a>
-    </td> 
+
+| 이름 | GitHub 프로필 | 
+|:-----:|:-------------:|
+| 김준혁 | [GitHub 프로필](https://github.com/JunHyeokDev) |
+| 박이나 | [GitHub 프로필](https://github.com/park-yina) |
+| 이규홍 | [GitHub 프로필](https://github.com/6puritans9) |
