@@ -23,7 +23,7 @@ if (rows) {
       const request = await fetch("/story", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json", // Indicating the type of content being sent
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           idx: targetId,

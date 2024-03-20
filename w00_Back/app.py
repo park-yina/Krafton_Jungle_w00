@@ -27,6 +27,7 @@ app = Flask(__name__)
 # app.config["SECRET_KEY"] = os.urandom(24)
 SECRET_KEY = "Jungle"
 storyData = []
+myStoryData = []
 
 
 @app.route("/")
@@ -125,13 +126,13 @@ def getPhoto():
 
 @app.route("/story", methods=["GET", "POST"])
 def show_story():
-    global storyData
-    if len(storyData) == 0:
-        idx = int(request.json["idx"])
-        tmp = collection.find_one({"ID": globalUserId})
-        storyData = tmp["Story"][idx]
+    global myStoryData
 
-    return render_template("story.html", storyData=storyData)
+    idx = int(request.json["idx"])
+    tmp = collection.find_one({"ID": globalUserId})
+    myStoryData = tmp["Story"][idx]
+
+    return render_template("story.html", storyData=myStoryData)
 
 
 @app.route("/story/save", methods=["POST"])
