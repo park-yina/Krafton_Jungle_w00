@@ -22,13 +22,15 @@
             </h5>
             <h3 class="mt-2 text-center text-2xl font-semibold tracking-tight text-gray-700 font-custom">사진을 고르면 이야기를
                 만들어드릴게요<br>🤭🥳</h3>
+            <h6 class="mt-2 text-center text-ml font-semibold tracking-tight text-gray-700 font-custom">참, 저희는 친환경 PNG만
+                받아요🙏</h6>
             <div class="flex justify-center items-center">
                 <form action="/story" method="post" enctype="multipart/form-data">
                     <input type="file" id="fileInput" class="hidden" />
                     <label for="fileInput">
                         <div class="w-24 h-24 rounded-full flex justify-center items-center cursor-pointer">
                             <div
-                                class="circle relative my-10 flex justify-center bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                                class="circle relative my-10 flex justify-center bg-indigo-600 px-3 py-1.5 text-xs font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
                                 사진 올리기</div>
                         </div>
                     </label>
@@ -42,10 +44,6 @@
                     class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">다른
                     이야기 보러가기</button>
             </div>
-        </div>
-
-        <div id="imgTest">
-
         </div>
     </div>
 </body>

@@ -37,10 +37,11 @@ def home():
 @app.route("/login", methods=["POST"])
 def login():
     # 클라이언트로부터 받은 이메일과 비밀번호
+    global globalUserId
     data = request.get_json()
     userId = data["userId"]
     password = data["password"]
-
+    globalUserId = userId
     user = collection.find_one({"ID": userId})
 
     # 사용자 인증
@@ -67,17 +68,16 @@ def show_upload():
 
 @app.route("/register", methods=["POST"])
 def register():
+    global globalUserId
     # POST 요청에서 받은 데이터 추출
     user_data = request.form
     user_id = user_data["ID"]
     name = user_data["name"]
     password = user_data["password"]
-
+    globalUserId = user_id
     # 이미 등록된 사용자인지 확인
     if collection.find_one({"ID": user_id}):
         return jsonify({"success": False, "message": "이미 등록된 사용자입니다."}), 400
-
-    # UUID 생성
 
     # 새 사용자 등록
     user = {
@@ -109,7 +109,7 @@ def getPhoto():
         file.save(save_path)
 
         data = imgToStoryData(save_path)
-        storyData.extend([data, data])
+        storyData.extend([data])
 
         return redirect(url_for("show_story"))
     else:
@@ -119,6 +119,34 @@ def getPhoto():
 @app.route("/story")
 def show_story():
     return render_template("story.html", storyData=storyData)
+
+
+@app.route("/story/save", methods=["POST"])
+def saveStory():
+    global storyData
+    if collection.find_one({"ID": globalUserId}):
+        collection.update_one({"ID": globalUserId}, {"$push": {"Story": storyData}})
+        storyData = []
+        return redirect(url_for("show_upload"))
+    else:
+        return jsonify({"에러!": "알 수 없는 이유로 저장에 실패하였습니다."}), 400
+
+
+@app.route("/find")
+def find_password():
+    return render_template("findPassword.html")
+
+
+@app.route("/find_result", methods=["POST"])
+def find_result():
+    user_id = request.form.get("ID")
+
+    user = collection.find_one({"ID": user_id})
+    if user:
+        password = user["password"]
+        return jsonify({"success": True, "password": password})
+    else:
+        return jsonify({"success": False, "message": "등록된 사용자가 없습니다."}), 404
 
 
 if __name__ == "__main__":

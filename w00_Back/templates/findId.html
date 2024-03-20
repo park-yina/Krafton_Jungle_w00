@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html class="h-full bg-white" lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" nonce="585d1d06e3914d019c1e8264f0c" src="//local.adguard.org?ts=1710937944121&amp;type=content-script&amp;dmn=cdn.discordapp.com&amp;url=https%3A%2F%2Fcdn.discordapp.com%2Fattachments%2F1219215040188780545%2F1219998217370865715%2FfindId.html%3Fex%3D660d56e1%26is%3D65fae1e1%26hm%3Daec645038c30ea241d16a2d317dcc02fa3b93f80edbaf900a02397289eb1c1fd%26&amp;app=firefox.exe&amp;css=3&amp;js=1&amp;rel=1&amp;rji=1&amp;sbe=1"></script>
+<script type="text/javascript" nonce="585d1d06e3914d019c1e8264f0c" src="//local.adguard.org?ts=1710937944121&amp;name=AdGuard%20Extra&amp;name=AdGuard%20Popup%20Blocker&amp;type=user-script"></script><link rel="stylesheet" href="output.css">
+    <script defer src="app.js" type="module"></script>
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- jQuery Cookie 플러그인 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='favi.ico') }}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dongle&display=swap" rel="stylesheet">
+    <script>
+        function find_id() {
+           var name = document.getElementById("name").value;
+           var password=documnet.getElementById("password").value;
+           $.ajax({
+               type: "POST",
+               url: "/id_result",
+               data: {name : name ,password:password},
+               success: function(response) {
+                   alert("아이디는: " + response.password);
+                   // 엔터 키를 누를 때 홈 페이지로 리다이렉트
+                   $(document).keypress(function(e) {
+                       if(e.which == 13) { // 엔터 키 코드는 13
+                           window.location.href = "/";
+                       }
+                   });
+               },
+               error: function(err) {
+                   console.error("Error:", err);
+               }
+           });
+       
+       }
+       </script>
+</head>
+
+<body class="h-full">
+    <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+        <button onclick="window.location.href='find_tab'" class="bg-indigo-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">돌아가기</button>
+
+        <div class="space-y-6 mt-4">
+            <div>
+                <label for="name" class="block text-sm font-medium leading-6 text-gray-900">이름</label>
+                <div class="mt-2">
+                    <input id="name" name="userId" type="text" autocomplete="text" required
+                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                </div>
+            </div>
+            </div>
+
+            <div>
+                <div class="flex items-center justify-between">
+                    <label for="password" class="block text-sm font-medium leading-6 text-gray-900">비밀번호</label>
+                </div>
+                <div class="mt-2">
+                    <input id="password" name="name" type="text" autocomplete="name" required
+                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                </div>
+            </div>
+
+            <div>
+                <button onclick="find_id()" class="bg-indigo-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">찾기</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
