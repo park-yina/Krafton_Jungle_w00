@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>사진을 골라주세요</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="output.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/output.css') }}">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script defer src="app.js" type="module"></script>
+    <script defer type="module" src="{{ url_for('static', filename='js/app.js' ) }}"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dongle&display=swap" rel="stylesheet">
@@ -23,14 +23,16 @@
             <h3 class="mt-2 text-center text-2xl font-semibold tracking-tight text-gray-700 font-custom">사진을 고르면 이야기를
                 만들어드릴게요<br>🤭🥳</h3>
             <div class="flex justify-center items-center">
-                <input type="file" id="fileInput" class="hidden" />
-                <label for="fileInput">
-                    <div class="w-24 h-24 rounded-full flex justify-center items-center cursor-pointer">
-                        <div
-                            class="circle my-10 flex justify-center bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-                            사진 올리기</div>
-                    </div>
-                </label>
+                <form action="/story" method="post" enctype="multipart/form-data">
+                    <input type="file" id="fileInput" class="hidden" />
+                    <label for="fileInput">
+                        <div class="w-24 h-24 rounded-full flex justify-center items-center cursor-pointer">
+                            <div
+                                class="circle relative my-10 flex justify-center bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                                사진 올리기</div>
+                        </div>
+                    </label>
+                </form>
             </div>
         </div>
 
@@ -40,6 +42,10 @@
                     class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">다른
                     이야기 보러가기</button>
             </div>
+        </div>
+
+        <div id="imgTest">
+
         </div>
     </div>
 </body>
