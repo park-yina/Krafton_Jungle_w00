@@ -1,4 +1,4 @@
-@import url("/w00_Back/static/css/constants.css"); 
+
 .modal {
     position: absolute; /* 모달이 뷰포트 안에 있도록 함 */
     z-index: 999;

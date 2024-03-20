@@ -41,4 +41,8 @@
         width: 3rem;
         display: block;
     }
+        .items {
+            box-shadow: 2px 1px 6px #151923;
+            border: var(--btn-color) solid 0.1rem;
+        }
 }
