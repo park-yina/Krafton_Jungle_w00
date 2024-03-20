@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generated Story</title>
+</head>
+<body>
+    <!-- <h1>Generated Story</h1>
+    <img src="data:image/png;base64,{{ img_src }}" alt="DB Image">
+    <p>{{ generated_story }}</p> -->
+
+    {% for data in storyData %}
+        <div>
+            <img src="data:image/png;base64,{{ data.img_src }}" alt="Uploaded Image">
+            <p>{{ data.text }}</p>
+        </div>
+    {% endfor %}
+
+</body>
+</html>
