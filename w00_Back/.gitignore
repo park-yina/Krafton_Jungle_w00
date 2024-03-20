@@ -2,3 +2,4 @@
 /venv39
 *.cfg
 /_pycache_
+/resources
