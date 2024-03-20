@@ -4,29 +4,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>회원 등록</title>
+    <title>Document</title>
+    <script type="text/javascript" nonce="585d1d06e3914d019c1e8264f0c"
+        src="//local.adguard.org?ts=1710928882678&amp;type=content-script&amp;dmn=cdn.discordapp.com&amp;url=https%3A%2F%2Fcdn.discordapp.com%2Fattachments%2F1219215040188780545%2F1219951025830756413%2Fsignup.html%3Fex%3D660d2aee%26is%3D65fab5ee%26hm%3D0a3bee56fac64139f3d56e69fb019b970fec251eb67c0426720b2805bfb316ab%26&amp;app=firefox.exe&amp;css=3&amp;js=1&amp;rel=1&amp;rji=1&amp;sbe=1"></script>
+    <script type="text/javascript" nonce="585d1d06e3914d019c1e8264f0c"
+        src="//local.adguard.org?ts=1710928882678&amp;name=AdGuard%20Extra&amp;name=AdGuard%20Popup%20Blocker&amp;type=user-script"></script>
     <link rel="stylesheet" href="output.css">
     <script defer src="app.js" type="module"></script>
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- jQuery Cookie 플러그인 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dongle&display=swap" rel="stylesheet">
+
+    <script>
+        function register() {
+
+            var id = document.getElementById("id").value;
+            var name = document.getElementById("name").value;
+            var password = document.getElementById("password").value;
+            var password_confirm = document.getElementById("password_confirm").value;
+
+            console.log(id)
+            console.log(name)
+            console.log(password)
+            console.log(password_confirm)
+
+            // 비밀번호 확인
+            if (password !== password_confirm) {
+                alert("비밀번호가 일치하지 않습니다.");
+                return;
+            }
+
+            if (id == "" || name == "" || password == "") {
+                alert("ID, 이름 혹은 비밀번호를 정확히 입력해주세요.");
+                return;
+            }
+
+            const formdata = new FormData();
+            formdata.append('ID', id);
+            formdata.append('name', name);
+            formdata.append('password', password);
+
+            $.ajax({
+                type: "POST",
+                url: "/ ",
+                data: formdata,
+                processData: false,
+                contentType: false,
+                success: function (response) {
+                    alert(response.message);
+                    if (response.success) {
+                        // 회원가입 성공 시 다른 페이지로 이동
+                        alert("회원가입 성공!")
+                        window.location.href = "/"; // 로그인 페이지로 이동하도록 설정
+                    }
+                },
+                error: function (err) {
+                    console.error("Error:", err);
+                }
+            });
+
+        }
+    </script>
 </head>
 
 <body class="h-full">
     <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <button id="goBackBtn" type="submit"
+        <button type="submit"
             class="flex w-auto justify-start rounded-md bg-yellow-600 px-2 py-1 text-xs font-semibold leading-5 text-white shadow-sm hover:bg-yellow-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-600">돌아가기</button>
-        <form class="space-y-6 mt-4" action="#" method="POST">
+        <div class="space-y-6 mt-4">
             <div>
                 <label for="ID" class="block text-sm font-medium leading-6 text-gray-900">ID</label>
                 <div class="mt-2">
-                    <input id="ID" name="ID" type="text" autocomplete="username" required
+                    <input id="id" name="ID" type="text" autocomplete="username" required
                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                 </div>
-                <button type="submit"
-                    class="flex w-auto justify-start rounded-md bg-indigo-600 px-2 py-1 text-xs font-semibold leading-5 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">중복
-                    확인</button>
             </div>
 
             <div>
@@ -57,11 +114,11 @@
                 </div>
 
                 <div>
-                    <button type="submit"
+                    <button onclick="register()"
                         class="flex mt-6 w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">등록</button>
                 </div>
-        </form>
-    </div>
+            </div>
+        </div>
 </body>
 
 </html>
