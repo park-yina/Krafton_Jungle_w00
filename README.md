@@ -1,13 +1,23 @@
-# 디렉토리 폴더 구조 설명
-##  W00_Back
-이곳에는 app.py등 플라스크에 직접적으로 관여되는 코드를 작성합니다. 대표적인 예시로는 jinja2가 있습니다.
-### static
-원인은 모르겠으나 아무리 해도 프론트에 있는 css를 읽어오지 못해서 일단 jinja2관련 css는 이곳에 넣어두었습니다.<br>
-constants파일은 테마 색상등 계속 중복해서 사용 할 색상들을 하드코딩하지 않기 위해 상수를 입력하는 곳입니다.<br>
-
-## w00 Front
-프론트 관련 설정을 집어넣는 곳으로 jinja2에 대한 랜더링을 담당하는 html코드 역시 이 폴더에 속합니다.
-### static
-정적으로 랜더링하는 대부분의 파일이 이곳에 들어갑니다.<br>css폴더나 constants폴더 등도 여기에 해당합니다.
-### templates
-jinja2를 사용하기 위해 만든 html 파일이 위치하는 곳입니다.g
+# 프로젝트 소개
+모든 개그는 자고로 우연에서 오는 것이다.<br>
+인공지능과 인공지능이 만나 사람에게 재미를 주는 프로젝트 바로 잼톡에 입장하신 모든 여러분을 환영합니다.
+# 사용된 기술적 부분
+## 형상관리
+- [x] 디스코드로 형상관리를 한다? 열정만 있으면 무엇이든 OK인 이곳은 정글입니다.<br>
+- [X] 우리는 개발자다.<br>그렇기에 모든 최종은 과감하게 git-hub의 main에서 관리합니다.
+# 팀원 소개
+    <td align="center" width="120px">
+      <a href="https://github.com/JunHyeokDev" target="_blank">
+        <img src="https://avatars.githubusercontent.com/u/120662329?v=4" alt="김준혁 프로필" />
+      </a>
+    </td>
+        <td align="center">
+      <a href="https://github.com/park-yina" target="_blank">
+       박이나
+      </a>
+    </td> 
+        <td align="center">
+      <a href="https://github.com/6puritans9" target="_blank">
+       이규홍
+      </a>
+    </td> 
