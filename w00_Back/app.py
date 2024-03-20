@@ -98,8 +98,17 @@ def signup():
     return render_template("signup.html")
 
 
+@app.route("/upload/myStory")
+def goToStory():
+
+    Story = collection.find_one({"ID": globalUserId})
+    story = Story["Story"]
+    return render_template("myStory.html", Story=story)
+
+
 @app.route("/upload", methods=["POST"])
 def getPhoto():
+    global storyData
     if request.files["file"] is not None:
         file = request.files["file"]
         save_dir = os.path.join(app.root_path, "resources")
@@ -107,17 +116,21 @@ def getPhoto():
             os.makedirs(save_dir)
         save_path = os.path.join(save_dir, file.filename)
         file.save(save_path)
-
         data = imgToStoryData(save_path)
         storyData.extend([data])
-
         return redirect(url_for("show_story"))
     else:
         return jsonify({"error": "No photo uploaded"}), 400
 
 
-@app.route("/story")
+@app.route("/story", methods=["GET", "POST"])
 def show_story():
+    global storyData
+    if len(storyData) == 0:
+        idx = int(request.json["idx"])
+        tmp = collection.find_one({"ID": globalUserId})
+        storyData = tmp["Story"][idx]
+
     return render_template("story.html", storyData=storyData)
 
 
