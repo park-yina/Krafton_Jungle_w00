@@ -72,7 +72,7 @@ def login():
 # 업로드 페이지 렌더링
 @app.route("/upload")
 def show_upload():
-    return render_template("upload.html")
+    return render_template("upload.html", id=globalUserId)
 
 
 @app.route("/register", methods=["POST"])
@@ -132,6 +132,20 @@ def getPhoto():
         return jsonify({"error": "No photo uploaded"}), 400
 
 
+@app.route("/story", methods=["GET"])
+def show_story():
+    global storyData
+    global myStoryData
+
+    data = []
+    if len(storyData) > 0:
+        data = storyData
+    else:
+        data = myStoryData
+
+    return render_template("story.html", storyData=data)
+
+
 @app.route("/story", methods=["POST"])
 def submit_story():
     global myStoryData
@@ -141,11 +155,6 @@ def submit_story():
     tmp = collection.find_one({"ID": globalUserId})
     myStoryData = tmp["Story"][idx]
     return redirect(url_for("show_story"))
-
-
-@app.route("/story", methods=["GET"])
-def show_story():
-    return render_template("story.html", storyData=myStoryData)
 
 
 @app.route("/story/save", methods=["POST"])
@@ -159,21 +168,21 @@ def saveStory():
         return jsonify({"에러!": "알 수 없는 이유로 저장에 실패하였습니다."}), 400
 
 
-@app.route("/find")
-def find_password():
+@app.route("/findPassword")
+def show_findPassword():
     return render_template("findPassword.html")
 
 
-@app.route("/find_result", methods=["POST"])
-def find_result():
-    user_id = request.form.get("ID")
-
-    user = collection.find_one({"ID": user_id})
-    if user:
-        password = user["password"]
-        return jsonify({"success": True, "password": password})
+@app.route("/findPassword", methods=["POST"])
+def find_password():
+    query = {"ID": request.form.get("id"), "name": request.form.get("name")}
+    document = collection.find_one(query, {"password": 1})
+    if document:
+        password = document.get("password")
+        print(password)
+        return jsonify({"password": password})
     else:
-        return jsonify({"success": False, "message": "등록된 사용자가 없습니다."}), 404
+        return jsonify({"msg": "일치하는 비밀번호가 없습니다"}), 404
 
 
 if __name__ == "__main__":

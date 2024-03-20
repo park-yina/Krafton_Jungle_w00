@@ -34,5 +34,3 @@ if (rows) {
     });
   });
 }
-
-// Functions
