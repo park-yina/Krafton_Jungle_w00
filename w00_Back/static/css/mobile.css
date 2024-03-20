@@ -12,7 +12,7 @@
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-gap: 0.5rem;
-        width: 120%;
+        width: 100%;
         border-radius: 2rem;
         border: hidden;
         height: 30rem;
@@ -24,7 +24,7 @@
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-gap: 0.5rem;
-        width: 120%;
+        width: 100%;
         border-radius: 2rem;
         border: hidden;
         height: 30rem;
