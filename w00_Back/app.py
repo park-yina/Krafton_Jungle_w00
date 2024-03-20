@@ -12,6 +12,7 @@ import base64
 from io import BytesIO
 from models import imgToStoryData
 import hashlib
+import random
 
 print(jwt.__file__)
 
@@ -24,7 +25,6 @@ collection = db.Jamtalk
 
 app = Flask(__name__)
 
-# app.config["SECRET_KEY"] = os.urandom(24)
 SECRET_KEY = "Jungle"
 storyData = []
 myStoryData = []
@@ -32,7 +32,15 @@ myStoryData = []
 
 @app.route("/")
 def home():
-    return render_template("index.html")
+    all_documents = list(collection.find())
+    while True:
+        random_index = random.randint(0, len(all_documents) - 1)
+        # 랜덤한 인덱스에 해당하는 문서 선택
+        random_document = all_documents[random_index]
+        if random_document["Story"]:
+            rnd = random.randint(0, len(random_document["Story"]) - 1)
+            storydata = random_document["Story"][rnd][0]
+            return render_template("index.html", storydata=storydata)
 
 
 @app.route("/login", methods=["POST"])

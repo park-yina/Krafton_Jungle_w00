@@ -19,8 +19,9 @@
             <h3 class="mt-10 text-center text-2xl font-semibold tracking-tight text-gray-700 font-custom">내가 고르는 재밌는
                 이야기</h3>
             <h1 class="mt-4 text-center text-7xl font-bold leading-9 tracking-tight text-gray-900 font-custom">잼톡</h1>
-            <img class="mx-auto w-36 mt-4 rounded-full" src="./temp/pepeSmash.JPG" alt="existingPics">
-            <p class="mt-4 text-center text-gray-500 mt-4">pepe가 다른 pepe를 때린다</p>
+            <img class="mx-auto w-36 mt-4 rounded-full" src="data:image/png;base64,{{ storydata.img_src }}"
+                alt="existingPics">
+            <p class="mt-4 text-center text-gray-500 mt-4">{{ storydata.text }}</p>
         </div>
 
         <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
