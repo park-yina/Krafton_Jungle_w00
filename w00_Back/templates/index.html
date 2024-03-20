@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html class="h-full bg-white" lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="output.css">
+    <script defer src="app.js" type="module"></script>
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- jQuery Cookie 플러그인 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dongle&display=swap" rel="stylesheet">
+
+    <script>
+        function login() {
+            var userId = document.getElementById("userId").value;
+            var password = document.getElementById("password").value;
+
+            console.log(userId);
+            console.log("password");
+            var formData = new FormData();
+            formData.append('userId', userId);
+            formData.append('password', password);
+
+            $.ajax({
+                type: "POST",
+                url: "/login",
+                data: {
+                    userId: userId,
+                    password: password,
+                },
+                success: function (response) {
+                    if (response['result'] == 'success') {
+                        $.cookie('mytoken', response['token']);
+                        token = response['token']
+                        alert(token)
+                        
+                        $.ajax({
+                            url: '/upload', // 요청을 보낼 URL
+                            type: 'POST', // 또는 POST 등의 HTTP 메서드
+                            headers: {
+                                'Authorization': 'Bearer ' + token // 헤더에 토큰 추가
+                            },
+                            success: function (response) {
+                                // 요청 성공 시 처리
+                                console.log(response);
+                                // 다른 처리
+                            },
+                            error: function (xhr, status, error) {
+                                // 요청 실패 시 처리
+                                console.error(error);
+                            }
+                        });
+
+
+                    } else {
+                        alert(response['msg'])
+                    }
+                }
+            })
+
+        }
+
+
+    </script>
+</head>
+
+<body class="h-full">
+    <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+        <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+            <h3 class="mt-10 text-center text-2xl font-semibold tracking-tight text-gray-700 font-custom">내가 고르는 재밌는
+                이야기</h3>
+            <h1 class="mt-4 text-center text-7xl font-bold leading-9 tracking-tight text-gray-900 font-custom">잼톡</h1>
+            <img class="mx-auto w-36 mt-4 rounded-full" src="./temp/pepeSmash.JPG" alt="existingPics">
+            <p class="mt-4 text-center text-gray-500 mt-4">pepe가 다른 pepe를 때린다</p>
+        </div>
+
+        <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+            <div class="space-y-6" method="POST">
+                <div>
+                    <label for="text" class="block text-sm font-medium leading-6 text-gray-900">ID</label>
+                    <div class="mt-2">
+                        <input id="userId" name="userId" type="text" autocomplete="text" required
+                            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                    </div>
+                </div>
+
+                <div>
+                    <div class="flex items-center justify-between">
+                        <label for="password" class="block text-sm font-medium leading-6 text-gray-900">비밀번호</label>
+
+                    </div>
+                    <div class="mt-2">
+                        <input id="password" name="password" type="password" autocomplete="current-password" required
+                            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                    </div>
+                </div>
+
+                <div>
+                    <button type="submit" onclick="login()"
+                        class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">시작하기</button>
+                </div>
+            </div>
+
+            <div class="flex justify-between text-sm mt-3">
+                <a href="#" class="font-semibold text-gray-700 hover:text-gray-400">비밀번호 찾기</a>
+                <a href="#" class="font-semibold text-indigo-600 hover:text-indigo-500">새로 등록</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
