@@ -124,14 +124,19 @@ def getPhoto():
         return jsonify({"error": "No photo uploaded"}), 400
 
 
-@app.route("/story", methods=["GET", "POST"])
-def show_story():
+@app.route("/story", methods=["POST"])
+def submit_story():
     global myStoryData
 
+    print(request.headers.get("Content-Type"))
     idx = int(request.json["idx"])
     tmp = collection.find_one({"ID": globalUserId})
     myStoryData = tmp["Story"][idx]
+    return redirect(url_for("show_story"))
 
+
+@app.route("/story", methods=["GET"])
+def show_story():
     return render_template("story.html", storyData=myStoryData)
 
 
