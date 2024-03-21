@@ -39,7 +39,8 @@ def home():
         random_document = all_documents[random_index]
         if random_document["Story"]:
             rnd = random.randint(0, len(random_document["Story"]) - 1)
-            storydata = random_document["Story"][rnd][0]
+            rnd2 = random.randint(0, len(random_document["Story"][rnd]) - 1)
+            storydata = random_document["Story"][rnd][rnd2]
             return render_template("index.html", storydata=storydata)
 
 
