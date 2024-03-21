@@ -1,23 +1,57 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html class="h-full bg-white" lang="ko">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generated Story</title>
+    <title>당신의 이야기</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/output.css') }}">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer type="module" src="{{ url_for('static', filename='js/app.js' ) }}"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dongle&display=swap" rel="stylesheet">
 </head>
 
-<body>
-    <!-- <h1>Generated Story</h1>
-    <img src="data:image/png;base64,{{ img_src }}" alt="DB Image">
-    <p>{{ generated_story }}</p> -->
+<body class="h-full">
+    <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+        <!-- Grid container with 2 columns -->
+        <div class="grid grid-cols-2 gap-4">
+            {% for data in storyData %}
+            <!-- Card -->
+            <div class="rounded overflow-hidden shadow-lg">
+                <img src="data:image/png;base64,{{ data.img_src }}" alt="Uploaded Image" class="w-full">
+                <div class="px-6 py-4">
+                    <p class="text-center text-gray-700">{{ data.text }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
 
-    {% for data in storyData %}
-    <div>
-        <img src="data:image/png;base64,{{ data.img_src }}" alt="Uploaded Image">
-        <p>{{ data.text }}</p>
     </div>
-    {% endfor %}
+    <div class="flex justify-center items-center">
+        <form action="/story" method="post" enctype="multipart/form-data">
+            <input type="file" id="fileInput" class="hidden" />
+            <label for="fileInput" class="flex justify-center items-center cursor-pointer">
+                <!-- Circle 1 -->
+                <div
+                    class="w-24 h-24 rounded-full flex justify-center items-center bg-indigo-600 px-3 py-1.5 text-xs font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 m-2">
+                    이어 올리기
+                </div>
+            </label>
+
+        </form>
+        <!-- Circle 2 -->
+        <form action="/story/save" method="post" enctype="multipart/form-data">
+            <button type="submit"
+                class="w-24 h-24 rounded-full flex justify-center items-center bg-indigo-600 px-3 py-1.5 text-xs font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 m-2">
+                저장하기
+            </button>
+        </form>
+
+    </div>
+
 </body>
 
 </html>
