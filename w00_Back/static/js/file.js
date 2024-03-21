@@ -1,5 +1,3 @@
-import Cards from "./cards.js";
-
 export default class File {
   static upload(uploaderEl) {
     uploaderEl.addEventListener("change", async (event) => {
@@ -19,10 +17,10 @@ export default class File {
           if (response.status !== 200) {
             throw new Error();
           }
-          window.location.href = response.url;
 
-          // const cards = new Cards(await response.json());
-          // cards.create();
+          // 이지선다
+          window.location.href = response.url;
+          // window.location.replace(response.url);
         } catch (error) {
           console.error("Uploading Error: ", error);
         }
